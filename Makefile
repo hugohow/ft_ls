@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:55:06 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/06 01:41:12 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/06 01:48:14 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,9 @@ SRC =	srcs/ft_ls.c   \
 all: $(NAME)
 
 %.o: %.c
-	@printf "[ft_printf] Compiling [.:]\r"
+	@printf "[ft_ls] Compiling [.:]\r"
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "[ft_printf] Compiling [:.]\r"
+	@printf "[ft_ls] Compiling [:.]\r"
 
 $(NAME): $(OBJ)
 	@make -C libft/
