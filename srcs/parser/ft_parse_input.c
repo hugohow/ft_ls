@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:54:51 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 16:07:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 02:11:08 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static int	raise_error(char option)
 {
-	ft_dprintf(2, "ls: illegal option -- %c\n");
-	ft_dprintf(2, \
-		"usage: ls [-ABCFGHLOPRSTUWabcdef\
-		ghiklmnopqrstuwx1] [file ...]\n", option);
+	ft_dprintf(2, "ls: illegal option -- %c\n", option);
+	ft_dprintf(2, "usage: ls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]\n");
 	return (-1);
 }
 
