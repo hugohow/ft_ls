@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 17:26:58 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 13:12:57 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 23:16:35 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,19 +196,7 @@ static const t_color	g_tab_colors_bg[] =
 //        11.  directory writable to others, without sticky bit
 static int get_index(struct stat file_stat)
 {
-	if (S_ISDIR(file_stat.st_mode) && (file_stat.st_mode & S_IWOTH) && (file_stat.st_mode & S_ISVTX))
-		return (18); //10
-	else if (S_ISDIR(file_stat.st_mode) && (file_stat.st_mode & S_IWOTH))
-		return (20); //11
-	if (S_ISDIR(file_stat.st_mode))
-		return (0); // 1
-	else if ((file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISUID))
-		return (14); // 8
-	else if ((file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISGID))
-		return (16); // 9
-	else if (file_stat.st_mode & S_IXUSR)
-		return (8); // 5
-	else if (S_ISLNK(file_stat.st_mode))
+	if (S_ISLNK(file_stat.st_mode))
 		return (2); // 2
 	else if (S_ISSOCK(file_stat.st_mode))
 		return (4); // 3
@@ -218,6 +206,18 @@ static int get_index(struct stat file_stat)
 		return (10); // 6
 	else if (S_ISCHR(file_stat.st_mode))
 		return (12); // 7
+	else if (S_ISDIR(file_stat.st_mode) && (file_stat.st_mode & S_IWOTH) && (file_stat.st_mode & S_ISVTX))
+		return (18); //10
+	else if (S_ISDIR(file_stat.st_mode) && (file_stat.st_mode & S_IWOTH))
+		return (20); //11
+	else if (S_ISDIR(file_stat.st_mode))
+		return (0); // 1
+	else if ((file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISUID))
+		return (14); // 8
+	else if ((file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISGID))
+		return (16); // 9
+	else if (file_stat.st_mode & S_IXUSR)
+		return (8); // 5
 	else
 		return (-1);
 	
