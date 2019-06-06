@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:56:29 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 16:14:16 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 10:29:34 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_print_datum(t_content *content)
 	else
 		ft_printf("%-6d", file_stat.st_gid);
 	if (S_ISCHR(file_stat.st_mode) || S_ISBLK(file_stat.st_mode))
-		ft_printf("%5u,  %5u ", major(file_stat.st_rdev), \
+		ft_printf("%3u,  %3u ", major(file_stat.st_rdev), \
 			minor(file_stat.st_rdev));
 	else
 		ft_printf("%5lld  ", file_stat.st_size);

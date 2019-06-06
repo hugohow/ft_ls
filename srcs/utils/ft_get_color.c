@@ -6,11 +6,95 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 17:26:58 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 17:48:09 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 13:12:57 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+// static char get_other_x(struct stat file_stat)
+// {
+// 	if (!(file_stat.st_mode & S_IXUSR) && \
+// 		!(file_stat.st_mode & S_IXGRP) && (file_stat.st_mode & S_ISVTX))
+// 		return('T');
+// 	else if ((file_stat.st_mode & S_IXUSR) && \
+// 		(file_stat.st_mode & S_IXGRP) && (file_stat.st_mode & S_ISVTX))
+// 		return('t');
+// 	else if (file_stat.st_mode & S_IXOTH)
+// 		return('x');
+// 	else
+// 		return('-');
+// }
+
+// static char get_group_x(struct stat file_stat)
+// {
+// 	if (!(file_stat.st_mode & S_IXGRP) && (file_stat.st_mode & S_ISGID))
+// 		return('S');
+// 	else if ((file_stat.st_mode & S_IXGRP) && (file_stat.st_mode & S_ISGID))
+// 		return('s');
+// 	else if (file_stat.st_mode & S_IXGRP)
+// 		return('x');
+// 	else
+// 		return('-');
+// }
+
+// static char get_owner_x(struct stat file_stat)
+// {
+// 	if (!(file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISUID))
+// 		return('S');
+// 	else if ((file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISUID))
+// 		return('s');
+// 	else if (file_stat.st_mode & S_IXUSR)
+// 		return('x');
+// 	else
+// 		return('-');
+// }
+
+// 	if (S_ISREG(st_mode))
+// 		return ('-');
+// 	if (S_ISDIR(st_mode))
+// 		return ('d');
+// 	if (S_ISCHR(st_mode))
+// 		return ('c');
+// 	if (S_ISBLK(st_mode))
+// 		return ('b');
+// 	if (S_ISFIFO(st_mode))
+// 		return ('p');
+// 	if (S_ISLNK(st_mode))
+// 		return ('l');
+// 	if (S_ISSOCK(st_mode))
+// 		return ('s');
+// 	return ('?');
+
+// char			*print_color(t_file *file_stat)
+// {
+// 	if (S_ISDIR(file_stat.st_mode) && file_stat.st_mode & S_IWOTH &&
+// 		(get_other_x(file_stat) == 't' || get_other_x(file_stat) == 'T'))
+// 		return ("\033[38;5;000m\033[48;5;002m");
+// 	if (S_ISDIR(file_stat.st_mode) && file_stat.st_mode & S_IWOTH)
+// 		return ("\033[38;5;000m\033[48;5;003m");
+// 	if (S_ISDIR(file_stat.st_mode))
+// 		return ("\033[38;5;014m");
+// 	if (S_ISLNK(file_stat.st_mode))
+// 		return ("\033[38;5;005m");
+// 	if (S_ISSOCK(file_stat.st_mode))
+// 		return ("\033[38;5;002m");
+// 	if (S_ISFIFO(file_stat.st_mode))
+// 		return ("\033[38;5;011m");
+// 	if (S_ISBLK(file_stat.st_mode))
+// 		return ("\033[38;5;004m\033[48;5;006m");
+// 	if (S_ISCHR(file_stat.st_mode))
+// 		return ("\033[38;5;004m\033[48;5;003m");
+// 	if (get_owner_x(file_stat) == 's' || get_owner_x(file_stat) == 'S')
+// 		return ("\033[38;5;000m\033[48;5;001m");
+// 	if (get_group_x(file_stat) == 's' || get_group_x(file_stat) == 'S')
+// 		return ("\033[38;5;000m\033[48;5;006m");
+// 	if (ft_strfind(file_data->modes, 'x') != -1)
+// 		return ("\033[38;5;001m");
+// 	return ("\033[38;5;007m");
+// }
+
+
 
 static const t_color	g_tab_colors_fg[] =
 {
@@ -106,13 +190,39 @@ static const t_color	g_tab_colors_bg[] =
 //        5.   executable
 //        6.   block special
 //        7.   character special
-
-
-
 //        8.   executable with setuid bit set
 //        9.   executable with setgid bit set
 //        10.  directory writable to others, with sticky bit
 //        11.  directory writable to others, without sticky bit
+static int get_index(struct stat file_stat)
+{
+	if (S_ISDIR(file_stat.st_mode) && (file_stat.st_mode & S_IWOTH) && (file_stat.st_mode & S_ISVTX))
+		return (18); //10
+	else if (S_ISDIR(file_stat.st_mode) && (file_stat.st_mode & S_IWOTH))
+		return (20); //11
+	if (S_ISDIR(file_stat.st_mode))
+		return (0); // 1
+	else if ((file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISUID))
+		return (14); // 8
+	else if ((file_stat.st_mode & S_IXUSR) && (file_stat.st_mode & S_ISGID))
+		return (16); // 9
+	else if (file_stat.st_mode & S_IXUSR)
+		return (8); // 5
+	else if (S_ISLNK(file_stat.st_mode))
+		return (2); // 2
+	else if (S_ISSOCK(file_stat.st_mode))
+		return (4); // 3
+	else if (S_ISFIFO(file_stat.st_mode))
+		return (6); // 4
+	else if (S_ISBLK(file_stat.st_mode))
+		return (10); // 6
+	else if (S_ISCHR(file_stat.st_mode))
+		return (12); // 7
+	else
+		return (-1);
+	
+}
+
 
 char	*ft_get_color_bg_fg(struct stat file_stat, char *buff)
 {
@@ -125,32 +235,9 @@ char	*ft_get_color_bg_fg(struct stat file_stat, char *buff)
 	if (colors == NULL)
 		return (buff);
 
-//        10.  directory writable to others, with sticky bit
-	if (S_ISDIR(file_stat.st_mode) && file_stat.st_mode & S_ISTXT)
-		i = 18;
-	else if (S_ISDIR(file_stat.st_mode) && (file_stat.st_mode & S_ISTXT) == 0)
-		i = 20;
-	else if (S_ISDIR(file_stat.st_mode))
-		i = 0;
-	else if (S_ISLNK(file_stat.st_mode))
-		i = 2;
-	else if (S_ISSOCK(file_stat.st_mode))
-		i = 4;
-	else if (S_ISFIFO(file_stat.st_mode))
-		i = 6;
-	else if (file_stat.st_mode & S_IXUSR)
-		i = 8;
-	else if (S_ISBLK(file_stat.st_mode))
-		i = 10;
-	else if (S_ISCHR(file_stat.st_mode))
-		i = 12;
-	else if (file_stat.st_mode & S_ISUID)
-		i = 14;
-//        9.   executable with setgid bit set
-	else if (file_stat.st_mode & S_ISGID)
-		i = 16;
-	else
-		return (NULL);
+	i = get_index(file_stat);
+	if (i == -1)
+		return (buff);
 	k = 0;
 	fg[0] = 0;
 	while (g_tab_colors_fg[k].key)

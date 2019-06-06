@@ -6,11 +6,12 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:44:50 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 17:15:00 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 12:16:38 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
 
 char	ft_get_letter_mode(unsigned long st_mode)
 {
