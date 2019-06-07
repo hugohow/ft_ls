@@ -6,14 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:44:50 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 12:16:38 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 16:33:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-
-char	ft_get_letter_mode(unsigned long st_mode)
+char		ft_get_letter_mode(unsigned long st_mode)
 {
 	if (S_ISREG(st_mode))
 		return ('-');
