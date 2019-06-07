@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 12:14:27 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 14:40:14 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ static char	*get_decimal_str(char *output, int size_allocation, int expo)
 		}
 		else
 		{
-			output = ft_bigint_multiply_by_two(output);
+			output = ft_bigint_multiply_by_two(output, size_allocation);
 			expo--;
 		}
 	}
@@ -170,8 +170,6 @@ char		*ft_ftoa(double nb, char *floating_str, t_flag *flag, int size)
 		output = ft_strcpy(output, "0.");
 	else if (expo == 1024)
 		output = ft_infnity_or_nan(output, flag);
-	else if (expo == 0)
-		output = ft_strcpy(output, "1.");
 	else if (expo != -1022)
 		output = get_decimal_str(output, size, expo);
 	return (output);

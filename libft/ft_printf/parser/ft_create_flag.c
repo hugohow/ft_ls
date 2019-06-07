@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:11:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 23:16:02 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 13:30:40 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_flag		*ft_create_flag(char *str)
 
 	if (ft_flag_get_key(str) == 0)
 		return (NULL);
-	if (!(flag = (t_flag *)ft_memalloc(sizeof(*flag))))
+	if (!(flag = (t_flag *)ft_memalloc(sizeof(t_flag))))
 		return (NULL);
 	flag->key = ft_flag_get_key(str);
 	flag->conv = str[ft_strlen(str) - 1];

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 20:35:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 20:38:56 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:37:13 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 ** ft_str_insert("abc", ' ', 0) = " abc"
 */
 
-char	*ft_str_insert(char *str, char c, int index)
+char		*ft_str_insert(char *str, char c, int index)
 {
 	char	*tmp;
 	char	*output;
 	int		j;
 
 	j = 0;
-	tmp = malloc((index + 2) * sizeof(char));
-	if (tmp == NULL || str == NULL)
+	if (str == NULL)
+		return (NULL);
+	tmp = (char *)ft_memalloc((index + 2) * sizeof(*tmp));
+	if (tmp == NULL)
 		return (NULL);
 	ft_strncpy(tmp, str, index);
 	tmp[index] = c;

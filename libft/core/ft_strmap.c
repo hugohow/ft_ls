@@ -12,15 +12,14 @@
 
 #include "libft.h"
 
-char	*ft_strmap(char const *str, char (*f)(char))
+char		*ft_strmap(char const *str, char (*f)(char))
 {
 	char	*new_str;
 	size_t	i;
 
 	if (str == NULL)
 		return (NULL);
-	new_str = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
-	if (new_str == NULL)
+	if (!(new_str = (char *)malloc((ft_strlen(str) + 1) * sizeof(*new_str))))
 		return (NULL);
 	i = -1;
 	while (str[++i])

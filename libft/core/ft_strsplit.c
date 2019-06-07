@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:12:49 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/11 10:45:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 13:19:37 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static size_t	count_words(char const *str, char c)
 {
-	size_t	i;
-	size_t	count;
+	size_t		i;
+	size_t		count;
 
 	i = 0;
 	count = 0;
@@ -35,13 +35,12 @@ static size_t	count_words(char const *str, char c)
 
 static char		*get_word(const char *str, char c)
 {
-	char	*word;
-	size_t	j;
+	char		*word;
+	size_t		j;
 
-	word = malloc((ft_strlen(str) + 1) * sizeof(char));
-	j = 0;
-	if (word == NULL)
+	if (!(word = (char *)malloc((ft_strlen(str) + 1) * sizeof(*word))))
 		return (NULL);
+	j = 0;
 	while (str[j] && str[j] != c)
 	{
 		word[j] = str[j];
@@ -53,14 +52,13 @@ static char		*get_word(const char *str, char c)
 
 char			**ft_strsplit(char const *str, char c)
 {
-	char	**list;
-	size_t	i;
-	size_t	k;
+	char		**list;
+	size_t		i;
+	size_t		k;
 
 	if (str == NULL)
 		return (NULL);
-	list = (char **)malloc((count_words(str, c) + 1) * sizeof(char *));
-	if (list == NULL)
+	if (!(list = (char **)malloc((count_words(str, c) + 1) * sizeof(**list))))
 		return (NULL);
 	i = -1;
 	k = 0;

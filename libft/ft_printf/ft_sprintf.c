@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 23:20:54 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 14:59:44 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ static int	ft_parse_cat(char *f, va_list *pap, size_t *plen, char *str)
 		return (-1);
 	output = ft_printf_arg(pap, flag);
 	if (output == NULL)
-	{
-		ft_memdel((void **)&flag);
 		return (-1);
-	}
 	if (flag->character == 0)
 	{
 		ft_memmove(str + *plen, output, ft_strlen(output));
@@ -97,8 +94,9 @@ int			ft_sprintf(char *str, const char *format, ...)
 		{
 			ret = ft_cat(format + i, &len, &ap, str);
 			if (ret == -1)
-				return (-1);
-			i += ret;
+				i += (int)ft_flaglen(format + i) - 1;
+			else
+				i += ret;
 		}
 		else
 			ft_cat_gen(format, &i, &len, str);

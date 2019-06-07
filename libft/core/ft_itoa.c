@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:04:59 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/10 20:37:00 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:27:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	ft_nblen(long nb)
 {
-	size_t	nblen;
+	size_t		nblen;
 
 	nblen = 0;
 	if (nb == 0)
@@ -34,14 +34,13 @@ static size_t	ft_nblen(long nb)
 
 char			*ft_itoa(int nb)
 {
-	char	*output;
-	size_t	nb_len;
-	long	n;
+	char		*output;
+	size_t		nb_len;
+	long		n;
 
 	n = nb;
 	nb_len = ft_nblen(n);
-	output = (char *)malloc((nb_len + 1) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)ft_memalloc((nb_len + 1) * sizeof(*output))))
 		return (NULL);
 	output[0] = n < 0 ? '-' : '0';
 	n = n < 0 ? -n : n;

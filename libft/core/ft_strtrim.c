@@ -21,8 +21,8 @@ static int	is_escapable_fttrim(char c)
 
 static int	count_len_fttrim(const char *str)
 {
-	int i;
-	int len;
+	int		i;
+	int		len;
 
 	i = 0;
 	len = 0;
@@ -44,18 +44,17 @@ static int	count_len_fttrim(const char *str)
 
 char		*ft_strtrim(char const *str)
 {
+	char	*output;
 	int		i;
 	int		k;
 	int		len;
-	char	*output;
 
 	if (str == NULL)
 		return (NULL);
 	len = count_len_fttrim(str);
 	if (len <= 0)
 		return (ft_strdup(""));
-	output = (char *)malloc((len + 1) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)malloc((len + 1) * sizeof(*output))))
 		return (NULL);
 	i = 0;
 	k = -1;

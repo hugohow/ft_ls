@@ -5,26 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 16:32:39 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/11 10:41:43 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/06/02 19:35:55 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/06/03 11:28:04 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_digit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
 static int	is_escapable_ft_atoi(char c)
 {
-	if (c == '\t' || c == '\v' || c == '\f' || c == '\r'
-		|| c == '\n' || c == ' ')
-		return (1);
-	return (0);
+	return (c == '\t' || c == '\v' || c == '\f' || c == '\r'
+		|| c == '\n' || c == ' ');
 }
 
 int			ft_atoi(const char *str)
@@ -43,7 +34,7 @@ int			ft_atoi(const char *str)
 		sign = str[i] == '-' ? -1 : 1;
 		i++;
 	}
-	while (str[i] && is_digit(str[i]))
+	while (str[i] && ft_isdigit(str[i]))
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;

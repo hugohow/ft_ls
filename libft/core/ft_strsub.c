@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strsub(char const *str, unsigned int start, size_t len)
+char		*ft_strsub(char const *str, unsigned int start, size_t len)
 {
 	char	*new_str;
 	size_t	i;
@@ -21,8 +21,7 @@ char	*ft_strsub(char const *str, unsigned int start, size_t len)
 		return (NULL);
 	if (len + start > ft_strlen(str))
 		return (NULL);
-	new_str = malloc((len + 1) * sizeof(char));
-	if (new_str == NULL)
+	if (!(new_str = malloc((len + 1) * sizeof(*new_str))))
 		return (NULL);
 	i = start;
 	while (i - start != len)

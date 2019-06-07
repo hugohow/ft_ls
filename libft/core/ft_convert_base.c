@@ -6,17 +6,16 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 13:18:46 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 16:22:47 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 17:55:57 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-static size_t size_to_malloc(long long nb, size_t base_len)
+static size_t	size_to_malloc(long long nb, size_t base_len)
 {
-	size_t size;
-	long long nb_tmp;
+	size_t		size;
+	long long	nb_tmp;
 
 	size = 0;
 	nb_tmp = nb;
@@ -28,7 +27,7 @@ static size_t size_to_malloc(long long nb, size_t base_len)
 	return (size);
 }
 
-char	*ft_convert_base(char *decimal, char *base)
+char			*ft_convert_base(char *decimal, char *base)
 {
 	char		*output;
 	long long	result;
@@ -42,8 +41,7 @@ char	*ft_convert_base(char *decimal, char *base)
 	while (decimal[++i])
 		result = result * 10 + (decimal[i] - '0');
 	len = size_to_malloc(result, base_len);
-	output = (char *)malloc((len + 2) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)ft_memalloc((len + 1) * sizeof(*output))))
 		return (NULL);
 	output[len--] = '\0';
 	if (result == 0)

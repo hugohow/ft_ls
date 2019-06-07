@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 17:26:58 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 16:33:55 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 16:47:30 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static const t_color	g_tab_colors_bg[] =
 	{0, ""},
 };
 
-static int	get_index(struct stat file_stat)
+static int				get_index(struct stat file_stat)
 {
 	if (S_ISLNK(file_stat.st_mode))
 		return (2);
@@ -85,7 +85,7 @@ static int	get_index(struct stat file_stat)
 		return (-1);
 }
 
-static char	*get_fg(char color, char *fg)
+static char				*get_fg(char color, char *fg)
 {
 	int		k;
 
@@ -103,7 +103,7 @@ static char	*get_fg(char color, char *fg)
 	return (fg);
 }
 
-static char	*get_bg(char color, char *bg)
+static char				*get_bg(char color, char *bg)
 {
 	int	k;
 
@@ -121,7 +121,7 @@ static char	*get_bg(char color, char *bg)
 	return (bg);
 }
 
-char	*ft_get_color_bg_fg(struct stat file_stat, char *buff)
+char					*ft_get_color_bg_fg(struct stat file_stat, char *buff)
 {
 	char	*colors;
 	int		i;

@@ -14,7 +14,7 @@
 
 static size_t	ft_nblen_ull(unsigned long long nb)
 {
-	size_t	nblen;
+	size_t		nblen;
 
 	nblen = 0;
 	if (nb == 0)
@@ -29,12 +29,11 @@ static size_t	ft_nblen_ull(unsigned long long nb)
 
 char			*ft_ulltoa(unsigned long long nb)
 {
-	char				*output;
-	size_t				nb_len;
+	char		*output;
+	size_t		nb_len;
 
 	nb_len = ft_nblen_ull(nb);
-	output = (char *)malloc((nb_len + 1) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)malloc((nb_len + 1) * sizeof(*output))))
 		return (NULL);
 	output[0] = '0';
 	output[nb_len] = '\0';
