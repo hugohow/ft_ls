@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:01:01 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 17:20:37 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:01:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ static char	ft_get_next_digit(char digit, int next_is_even)
 	return (0);
 }
 
-static int	is_over(char *output, int *p_i, int *p_j)
+static int	is_over(char *output, size_t *p_i, size_t *p_j, size_t limit)
 {
 	int finished;
 
 	finished = 0;
-	while (output[*p_i] && ft_isdigit(output[*p_i]) == 0)
+	while (*p_i < limit - 1 && output[*p_i] && ft_isdigit(output[*p_i]) == 0)
 	{
 		output[*p_i - 1] = output[*p_i];
 		*p_i = *p_i + 1;
 	}
 	*p_j = *p_i + 1;
-	while (output[*p_j] && ft_isdigit(output[*p_j]) == 0)
+	while (*p_j < limit - 1 && output[*p_j] && ft_isdigit(output[*p_j]) == 0)
 	{
 		output[*p_j - 1] = output[*p_j];
 		*p_i = *p_i + 1;
@@ -68,20 +68,20 @@ static int	is_over(char *output, int *p_i, int *p_j)
 
 char		*ft_bigint_divide_by_two(char *output, size_t limit)
 {
-	int i;
-	int j;
-	int finished;
-	int even;
+	size_t	i;
+	size_t	j;
+	int		finished;
+	int		even;
 
 	output = ft_bigint_shift_right(output, 1, limit);
 	output[0] = '0';
 	i = 0;
 	j = 0;
 	finished = 0;
-	while (output[i] && finished != 1)
+	while (i < limit && output[i] && finished != 1)
 	{
 		even = (output[i] - '0') % 2;
-		finished = is_over(output, &i, &j);
+		finished = is_over(output, &i, &j, limit);
 		output[i] = ft_get_next_digit(output[j], even);
 		i = j;
 	}

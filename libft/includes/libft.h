@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 16:11:35 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 13:55:08 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 11:59:57 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,31 +81,32 @@ void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstadd(t_list **alst, t_list *new_el);
 void			ft_lstfree(t_list *head);
 t_list			*ft_lstpop(t_list **p_head, void (*del)(void *, size_t));
 t_list			*ft_lstpeek(t_list *head, int (*cmp)(t_list *n1, t_list *n2));
-t_list			*ft_lstpush(t_list **head, void const *data, size_t data_size);
 size_t			ft_lstlen(t_list *head);
+t_list			*ft_lstnew(void const *content, size_t content_size);
+t_list			*ft_lstpush(t_list **head, void const *data, size_t data_size);
+t_list			*ft_lst_insertafter(t_list **head, void const *content, \
+	size_t content_size);
 char			*ft_convert_base(char *decimal, char *base);
 wchar_t			*ft_wstrjoin(wchar_t const *str1, wchar_t const *str2);
 size_t			ft_wcslen(const wchar_t *str);
 void			ft_wputchar(wchar_t c);
 void			ft_wputstr(wchar_t const *str);
 wchar_t			*ft_wstrsub(wchar_t const *str, unsigned int start, size_t len);
-void			ft_lstdelnode(t_list **head, size_t pos);
-int				get_next_line(int const fd, char **line);
 char			*ft_strcat_r(const char *src, char *dst);
 char			*ft_str_insert(char *str, char c, int index);
 char			*ft_str_left_shift(char *str, int len);
 char			*ft_str_right_shift(char *str, int len);
+
 char			*ft_bigint_add(char *dst, const char *to_add, size_t limit);
 char			*ft_bigint_divide_by_two(char *output, size_t limit);
-char			*ft_bigint_multiply_by_two(char *output);
+char			*ft_bigint_multiply_by_two(char *output, size_t limit);
 char			*ft_bigint_shift_right(char *str, size_t nb, size_t limit);
 char			*ft_bigint_trim(char *str);
 char			*ft_bigint_round(char *dst, int precision, size_t limit);
 int				ft_bigint_get_index(char *str, char c);
-int				ft_str_brackets_is_valid(const char *str, size_t len);
+
 #endif

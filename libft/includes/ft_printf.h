@@ -6,18 +6,17 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 01:29:10 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/08 14:38:00 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <string.h>
-# include <stdlib.h>
 # include <limits.h>
+# include <stdlib.h>
 # include "libft.h"
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"
@@ -49,7 +48,8 @@
 # define KEY_S (1 << 6)
 # define KEY_F (1 << 7)
 # define KEY_E (1 << 8)
-# define MAX_ALLOCATION_LFLOAT 4096
+# define MAX_ALLOCATION_LFLOAT 5000
+# define MAX_ALLOCATION_FLOAT 1024
 # define H0 "1"
 # define H1 "0.5"
 # define H2 "0.25"
@@ -130,6 +130,7 @@ typedef struct		s_flag
 	int				hash;
 	char			character;
 	int				character_i;
+	size_t			size_allocation;
 }					t_flag;
 
 typedef char		*(t_ft)(va_list *, t_flag *);
