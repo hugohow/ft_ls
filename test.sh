@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 22:57:59 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/06 23:29:13 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/10 14:49:58 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,6 +128,7 @@ execute "-u"
 execute "-f"
 execute "-i"
 execute "-Rt"
+execute "-RtU"
 execute "-al"
 execute "-alr"
 execute "-alrt"
@@ -399,6 +400,9 @@ printf "\033[0m"
 execute "-R ~"
 execute "-RS ~"
 execute "-R ~/"
+execute "-RU ~/"
+execute "-RUl ~/"
+execute "-RUlt ~/"
 execute "-Rul ~/"
 execute "-RulS ~/"
 execute "-Rulf ~/"

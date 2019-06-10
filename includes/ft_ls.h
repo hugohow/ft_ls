@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 17:48:32 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 14:46:17 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define FLAG_I (1 << 10)
 # define FLAG_CAP_G (1 << 11)
 # define FLAG_ONE (1 << 12)
+# define FLAG_CAP_U (1 << 13)
 # define SIXMONTHS ((365 / 2) * 86400)
 # define ANSI_COLOR_FG_BLACK "\x1b[30m"
 # define ANSI_COLOR_FG_RED "\x1b[31m"
@@ -93,6 +94,7 @@ typedef struct		s_content
 	size_t			len;
 	int				level;
 	time_t			time;
+	long       		timensec;
 	int				has_extended_attributes;
 	int				has_acl;
 	unsigned long	st_mode;

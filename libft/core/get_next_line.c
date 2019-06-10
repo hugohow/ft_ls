@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:11:57 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 16:23:08 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/08 15:13:48 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				get_line(t_list *node, char **line)
 	return (line_len);
 }
 
-void			free_node(t_list **head, int fd)
+static void		free_node(t_list **head, int fd)
 {
 	t_list *node;
 	size_t position;
