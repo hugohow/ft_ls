@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:33:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 23:01:32 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 23:16:22 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,20 @@ static void	update_len(t_content *content, t_content *content_child)
 
 	if (ft_nblen(file_stat.st_ino) > content->len_ino)
 		content->len_ino = ft_nblen(file_stat.st_ino);
-	content->len_uid = 10;
-	content->len_gid = 10;
-	content->len_major = 10;
-	content->len_minor = 10;
+
+	if (ft_nblen(file_stat.st_uid) > content->len_uid)
+		content->len_uid = ft_nblen(file_stat.st_uid);
+
+	if (ft_nblen(file_stat.st_gid) > content->len_gid)
+		content->len_gid = ft_nblen(file_stat.st_gid);
+
+	if (S_ISCHR(file_stat.st_mode) || S_ISBLK(file_stat.st_mode))
+	{
+		if (ft_nblen(major(file_stat.st_rdev)) > content->len_major)
+			content->len_major = ft_nblen(major(file_stat.st_rdev));
+		if (ft_nblen(minor(file_stat.st_rdev)) > content->len_minor)
+			content->len_minor = ft_nblen(minor(file_stat.st_rdev));
+	}
 }
 
 static void	fill_with_file(char *d_name, t_content *content, \

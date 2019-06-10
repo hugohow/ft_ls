@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 22:57:59 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/10 21:00:28 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/10 23:58:06 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ execute()
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
 		printf "/bin/ls return: %d | ft_ls return: %d\n\n" $OUR_RET $YOUR_RET
 		quit
-	elif [ $OUR_RET -ne 0 ] && !(diff ${LOG_2} ${RESULT_2}); then
+	elif [ $OUR_RET -ne 0 ] && !(diff -wb ${LOG_2} ${RESULT_2}); then
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
-		diff ${RESULT_2} ${LOG_2}
+		diff -wb ${RESULT_2} ${LOG_2}
 		quit
-	elif !(diff ${LOG} ${RESULT}) then
+	elif !(diff -wb ${LOG} ${RESULT}) then
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
-		diff ${LOG} ${RESULT}
+		diff -wb ${LOG} ${RESULT}
 		quit
 	else
 		printf "\n\033[32mSuccess:\t\033[37;1m ls ${1}\033[0m\n\n"
@@ -411,6 +411,7 @@ execute "-Rulrfl ~/"
 execute "-Rulrflg ~/"
 execute "-Rulrflgd ~/"
 execute "-RulrSlgd ~/"
+execute "-RulrSlgdn ~/"
 execute "-Rulr -Slg -d ~/"
 execute "-Rulr -Slg ~/"
 execute "-Rulr -Slg -i ~/"
@@ -443,6 +444,7 @@ execute "-ulf /"
 execute "-ulf /"
 execute "-ulfl /"
 execute "-ulflg /"
+execute "-ulflgn /"
 execute "-ulflgd /"
 execute "-ulSlgd /"
 execute "-ul -Slg -d /"
@@ -485,6 +487,7 @@ execute "-R /etc/"
 execute "-RS /etc/"
 execute "-R /etc/"
 execute "-Rul /etc/"
+execute "-Ruln /etc/"
 execute "-RulS /etc/"
 execute "-Rulf /etc/"
 execute "-Rulrf /etc/"

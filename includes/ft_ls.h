@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 22:52:13 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 23:09:19 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define FLAG_R (1 << 2)
 # define FLAG_CAP_R (1 << 3)
 # define FLAG_T (1 << 4)
+
 # define FLAG_G (1 << 5)
 # define FLAG_U (1 << 6)
 # define FLAG_F (1 << 7)
@@ -41,6 +42,7 @@
 # define FLAG_ONE (1 << 12)
 # define FLAG_CAP_U (1 << 13)
 # define FLAG_O (1 << 14)
+# define FLAG_N (1 << 15)
 # define SIXMONTHS ((365 / 2) * 86400)
 # define ANSI_COLOR_FG_BLACK "\x1b[30m"
 # define ANSI_COLOR_FG_RED "\x1b[31m"
