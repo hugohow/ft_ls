@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:51:50 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 13:39:58 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:11:26 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static t_node_avlt	*ft_avlt_create_node(void *content, size_t content_size)
 	t_node_avlt	*node;
 
 	if (!(node = (t_node_avlt *)ft_memalloc(sizeof(t_node_avlt))))
-	if (node == NULL)
 		return (NULL);
 	node->content = content;
 	node->content_size = content_size;

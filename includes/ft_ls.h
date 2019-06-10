@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 01:05:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:17:29 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,4 +164,6 @@ void				ft_del_tree(t_node_avlt **p_root);
 char				ft_get_letter_mode(unsigned long st_mode);
 char				*ft_get_color_bg_fg(struct stat file_stat, char *buff);
 void				ft_print_content(t_node_avlt *node, int index, t_content *content_root);
+t_content			*ft_get_default_values(t_content *content, long flag, \
+	int level, size_t len);
 #endif

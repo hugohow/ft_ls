@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:55:06 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/10 22:36:34 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/11 01:18:10 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC =	srcs/ft_ls.c   \
 		srcs/parser/ft_create_content.c   \
 		srcs/parser/ft_has_acl_extended.c   \
 		srcs/parser/ft_parse_input.c   \
+		srcs/parser/ft_get_default_values.c   \
 		srcs/print_file/ft_print_acl_attr.c   \
 		srcs/print_file/ft_print_date.c   \
 		srcs/print_file/ft_print_datum.c   \
