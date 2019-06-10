@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:09:18 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 16:22:43 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:48:18 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void		ft_print_subtree(t_content *content, int *p_ret, int *p_index_g)
 		}
 	}
 	else
-		ft_print_full_tree(content->subtree, p_ret, p_index_g);
+		ft_print_full_tree(content->subtree, p_ret, p_index_g, content);
 }
 
-void		ft_print_full_tree(t_node_avlt *root, int *p_ret, int *p_index_g)
+void		ft_print_full_tree(t_node_avlt *root, int *p_ret, int *p_index_g, t_content *content_dir)
 {
 	t_queue		*queue;
 	t_content	*content_root;
@@ -66,9 +66,9 @@ void		ft_print_full_tree(t_node_avlt *root, int *p_ret, int *p_index_g)
 	queue = ft_queue_init();
 	content_root = (t_content *)(root->content);
 	if (content_root->flag & FLAG_R)
-		ft_print_tree_reverse(root, &queue, p_index_g);
+		ft_print_tree_reverse(root, &queue, p_index_g, content_dir);
 	else
-		ft_print_tree(root, &queue, p_index_g);
+		ft_print_tree(root, &queue, p_index_g, content_dir);
 	while (queue->size)
 	{
 		node = (t_node_avlt *)((queue->head)->content);

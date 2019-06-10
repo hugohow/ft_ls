@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 14:47:20 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:52:25 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_content	*ft_content_err(char *path)
 	buff[0] = 0;
 	ft_strcat(buff, "ls: ");
 	ft_strcat(buff, path);
-	ft_strcat(buff, ": No such file or directory\n");
+	ft_strcat(buff, ": No such file or directory");
 	content->name = ft_strdup("");
 	content->error = ft_strdup(buff);
 	content->path = ft_strdup(path);
@@ -69,6 +69,9 @@ static t_content	*check_if_link_dir(t_content *content)
 static t_content	*ft_get_default_values(t_content *content, long flag, \
 	int level, size_t len)
 {
+	struct passwd	*pwd;
+	struct group	*grp;
+	
 	content->nb_files = 0;
 	content->level = level;
 	content->len = len;
@@ -95,6 +98,25 @@ static t_content	*ft_get_default_values(t_content *content, long flag, \
 	content->has_acl = has_acl(content->path);
 	content->error = NULL;
 	content->link = NULL;
+	content->len_link = 0;
+	content->len_owner = 0;
+	content->len_group = 0;
+	content->len_size = 0;
+	content->len_uid = 0;
+	content->len_gid = 0;
+	content->len_major = 0;
+	content->len_minor = 0;
+	content->len_ino = 0;
+	if ((content->flag & FLAG_G) == 0 && ((pwd = getpwuid((content->file_stat).st_uid)) != NULL))
+		content->pw_name = pwd->pw_name;
+	else
+		content->pw_name = NULL;
+	if ((content->flag & FLAG_O) == 0 && (grp = getgrgid((content->file_stat).st_gid)) != NULL)
+		content->gr_name = grp->gr_name;
+	else
+		content->gr_name = NULL;
+
+
 	return (content);
 }
 

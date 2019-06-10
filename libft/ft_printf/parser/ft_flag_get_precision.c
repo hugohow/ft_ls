@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:30:05 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 16:46:40 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 20:15:09 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int					ft_flag_get_precision(char *flag)
+int					ft_flag_get_precision(char *flag, va_list *ap)
 {
 	unsigned int	i;
 	long long		precision;
@@ -30,6 +30,13 @@ int					ft_flag_get_precision(char *flag)
 				i++;
 			}
 			if (precision > 2147483647)
+				return (-1);
+			return ((int)precision);
+		}
+		else if (flag[i] == '.' && flag[i + 1] == '*')
+		{
+			precision = (long long)va_arg(*ap, int);
+			if (precision > 2147483647 || precision < 0)
 				return (-1);
 			return ((int)precision);
 		}

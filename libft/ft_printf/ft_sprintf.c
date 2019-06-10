@@ -6,22 +6,22 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 14:59:44 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 20:10:42 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_parse_cat(char *f, va_list *pap, size_t *plen, char *str)
+static int	ft_parse_cat(char *f, va_list *ap, size_t *plen, char *str)
 {
 	int		len;
 	t_flag	*flag;
 	char	*output;
 
 	len = 0;
-	if (!(flag = ft_create_flag(f)))
+	if (!(flag = ft_create_flag(f, ap)))
 		return (-1);
-	output = ft_printf_arg(pap, flag);
+	output = ft_printf_arg(ap, flag);
 	if (output == NULL)
 		return (-1);
 	if (flag->character == 0)
@@ -60,14 +60,14 @@ static void	ft_cat_gen(const char *format, int *p_i, size_t *p_len, char *str)
 	}
 }
 
-static int	ft_cat(const char *format, size_t *p_len, va_list *p_ap, char *str)
+static int	ft_cat(const char *format, size_t *p_len, va_list *ap, char *str)
 {
 	char				*flag;
 
 	if (!(flag = (char *)ft_memalloc((ft_strlen(format) + 1) * sizeof(char))))
 		return (-1);
 	flag = ft_strncpy(flag, format, (int)ft_flaglen(format) + 1);
-	if (ft_parse_cat(flag, p_ap, p_len, str) == -1)
+	if (ft_parse_cat(flag, ap, p_len, str) == -1)
 	{
 		ft_memdel((void **)&flag);
 		return (-1);

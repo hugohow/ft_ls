@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 22:57:59 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/10 14:49:58 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/10 21:00:28 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ execute()
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
 		printf "/bin/ls return: %d | ft_ls return: %d\n\n" $OUR_RET $YOUR_RET
 		quit
-	elif [ $OUR_RET -ne 0 ] && !(diff -wB ${LOG_2} ${RESULT_2}); then
+	elif [ $OUR_RET -ne 0 ] && !(diff ${LOG_2} ${RESULT_2}); then
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
-		diff -wB ${RESULT_2} ${LOG_2}
+		diff ${RESULT_2} ${LOG_2}
 		quit
-	elif !(diff -wB ${LOG} ${RESULT}) then
+	elif !(diff ${LOG} ${RESULT}) then
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
-		diff -wB ${LOG} ${RESULT}
+		diff ${LOG} ${RESULT}
 		quit
 	else
 		printf "\n\033[32mSuccess:\t\033[37;1m ls ${1}\033[0m\n\n"

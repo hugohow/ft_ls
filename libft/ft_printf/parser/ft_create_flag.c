@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:11:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/08 14:37:07 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 20:32:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flag		*ft_create_flag(char *str)
+t_flag		*ft_create_flag(char *str, va_list *p_ap)
 {
 	t_flag	*flag;
 
@@ -23,13 +23,13 @@ t_flag		*ft_create_flag(char *str)
 	flag->key = ft_flag_get_key(str);
 	flag->conv = str[ft_strlen(str) - 1];
 	flag->length = ft_flag_get_length(str);
-	flag->precision = ft_flag_get_precision(str);
-	flag->width = ft_flag_get_width(str);
 	flag->minus = ft_flag_get_minus(str);
 	if (flag->minus == 1)
 		flag->zero = 0;
 	else
 		flag->zero = ft_flag_get_zero(str);
+	flag->width = ft_flag_get_width(str, p_ap, flag);
+	flag->precision = ft_flag_get_precision(str, p_ap);
 	flag->plus = ft_flag_get_plus(str);
 	flag->space = ft_flag_get_space(str);
 	flag->hash = ft_flag_get_hash(str);

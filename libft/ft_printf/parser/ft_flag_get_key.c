@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 20:03:54 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 16:43:13 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 17:57:17 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int			ft_flag_get_key(char *flag)
 	char	c;
 
 	c = flag[ft_strlen(flag) - 1];
+	if (ft_strlen(flag) == 1)
+		return (0);
 	if (c == '%')
 		return (KEY_PERCENTAGE);
 	else if (c == 'c' || c == 'C')

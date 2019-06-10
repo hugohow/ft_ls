@@ -6,13 +6,13 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:55:06 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/06 01:48:14 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/10 22:36:34 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		=		ft_ls
 CC			= 		gcc
-CFLAGS 		= 		-I includes/ -Wall -Werror -Wextra
+CFLAGS 		= 		-I includes/ -Wall -Werror -Wextra -g
 OBJ 		= 		$(SRC:.c=.o)
 
 C_OK		=		"\033[35m"

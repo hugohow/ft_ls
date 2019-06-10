@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:39:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 15:39:20 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 20:29:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int					ft_flag_get_zero(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if (str[i] == '.')
+			break ;
 		if (ft_isdigit(str[i]))
 		{
 			if (str[i] == '0')

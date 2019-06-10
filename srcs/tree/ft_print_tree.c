@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 00:11:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 16:21:48 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:25:57 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ static int	ft_enqueue_node_tree(t_queue **p_queue, t_node_avlt *root)
 }
 
 void		ft_print_tree_reverse(t_node_avlt *root, \
-	t_queue **p_queue, int *p_index_g)
+	t_queue **p_queue, int *p_index_g, t_content	*content_root)
 {
 	t_content *content;
 
 	if (root == NULL)
 		return ;
-	ft_print_tree_reverse(root->right, p_queue, p_index_g);
+	ft_print_tree_reverse(root->right, p_queue, p_index_g, content_root);
 	content = (t_content *)(root->content);
 	if (!(content->level == 0 && ft_can_browse_dir(content)))
 	{
 		*p_index_g = *p_index_g + 1;
-		ft_print_content(root, *p_index_g);
+		ft_print_content(root, *p_index_g, content_root);
 	}
 	if (content->level == 0 || content->flag & FLAG_CAP_R)
 	{
@@ -60,21 +60,21 @@ void		ft_print_tree_reverse(t_node_avlt *root, \
 			ft_enqueue_node_tree(p_queue, root);
 		}
 	}
-	ft_print_tree_reverse(root->left, p_queue, p_index_g);
+	ft_print_tree_reverse(root->left, p_queue, p_index_g, content_root);
 }
 
-void		ft_print_tree(t_node_avlt *root, t_queue **p_queue, int *p_index_g)
+void		ft_print_tree(t_node_avlt *root, t_queue **p_queue, int *p_index_g, t_content	*content_root)
 {
 	t_content *content;
 
 	if (root == NULL)
 		return ;
-	ft_print_tree(root->left, p_queue, p_index_g);
+	ft_print_tree(root->left, p_queue, p_index_g, content_root);
 	content = (t_content *)(root->content);
 	if (!(content->level == 0 && ft_can_browse_dir(content)))
 	{
 		*p_index_g = *p_index_g + 1;
-		ft_print_content(root, *p_index_g);
+		ft_print_content(root, *p_index_g, content_root);
 	}
 	if (content->level == 0 || content->flag & FLAG_CAP_R)
 	{
@@ -85,5 +85,5 @@ void		ft_print_tree(t_node_avlt *root, t_queue **p_queue, int *p_index_g)
 			ft_enqueue_node_tree(p_queue, root);
 		}
 	}
-	ft_print_tree(root->right, p_queue, p_index_g);
+	ft_print_tree(root->right, p_queue, p_index_g, content_root);
 }

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/08 14:38:00 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 20:59:12 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,14 +164,14 @@ char				*ft_apply_precision_str(char *str, t_flag *flag, int sign);
 char				*ft_apply_precision_p(char *str, int precision);
 int					get_length(char *flag);
 char				*ft_printf_arg(va_list *ap, t_flag *flag);
-t_flag				*ft_create_flag(char *str);
+t_flag				*ft_create_flag(char *str, va_list *p_ap);
 int					ft_flag_get_space(char *flag);
 int					ft_flag_get_hash(char *flag);
 int					ft_flag_get_length(char *flag);
 int					ft_flag_get_minus(char *flag);
 int					ft_flag_get_plus(char *flag);
-int					ft_flag_get_precision(char *flag);
-int					ft_flag_get_width(char *flag);
+int					ft_flag_get_precision(char *flag, va_list *p_ap);
+int					ft_flag_get_width(char *str, va_list *p_ap, t_flag *flag);
 int					ft_flag_get_zero(char *flag);
 int					ft_flag_get_key(char *flag);
 char				*ft_add_char(char *str, t_flag *flag, char c);

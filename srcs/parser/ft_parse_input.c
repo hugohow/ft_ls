@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:54:51 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 14:48:40 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 15:02:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static const t_letter_flag	g_letter_flag[] =
 	{'G', FLAG_CAP_G},
 	{'1', FLAG_ONE},
 	{'U', FLAG_CAP_U},
+	{'o', FLAG_O},
 	{0, 0},
 };
 

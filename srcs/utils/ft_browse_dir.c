@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:33:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 16:42:42 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/10 23:01:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,62 @@ static int	file_is_hidden(char *name)
 		|| ft_strcmp(name, "..") == 0 || name[0] == '.')
 		return (1);
 	return (0);
+}
+
+static int	ft_nblen(int nb)
+{
+	int		nblen;
+
+	nblen = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+	{
+		nb = -nb;
+		nblen++;
+	}
+	while (nb != 0)
+	{
+		nb /= 10;
+		nblen++;
+	}
+	return (nblen);
+}
+
+static int	ft_strlen_m(const char *str)
+{
+	int length;
+
+	length = 0;
+	if (str == NULL)
+		return (0);
+	while (str[length])
+		length++;
+	return (length);
+}
+
+
+static void	update_len(t_content *content, t_content *content_child)
+{
+	struct stat file_stat;
+
+	file_stat = content_child->file_stat;
+	if (ft_nblen(file_stat.st_nlink) > content->len_link)
+		content->len_link = ft_nblen(file_stat.st_nlink);
+	if (ft_strlen_m(content_child->pw_name) > content->len_owner)
+		content->len_owner = ft_strlen_m(content_child->pw_name);
+	if (ft_strlen_m(content_child->gr_name) > content->len_group)
+		content->len_group = ft_strlen_m(content_child->gr_name);
+
+	if (ft_nblen(content_child->st_size) > content->len_size)
+		content->len_size = ft_nblen(content_child->st_size);
+
+	if (ft_nblen(file_stat.st_ino) > content->len_ino)
+		content->len_ino = ft_nblen(file_stat.st_ino);
+	content->len_uid = 10;
+	content->len_gid = 10;
+	content->len_major = 10;
+	content->len_minor = 10;
 }
 
 static void	fill_with_file(char *d_name, t_content *content, \
@@ -49,6 +105,7 @@ static void	fill_with_file(char *d_name, t_content *content, \
 			content->nb_files = content->nb_files + 1;
 			content->total_size = content->total_size + \
 				(content_child->file_stat).st_blocks;
+			update_len(content, content_child);
 		}
 	}
 }
