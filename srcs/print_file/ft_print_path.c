@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:57:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 16:15:10 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:00:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_path(t_content *content)
 {
 	struct stat	file_stat;
 	ssize_t		ret;
-	char		buf[BUFF_SIZE];
+	char		buf[PATH_MAX];
 
 	file_stat = content->file_stat;
 	if (content->level == 0)

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:33:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 23:16:22 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:04:45 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ static void	update_len(t_content *content, t_content *content_child)
 static void	fill_with_file(char *d_name, t_content *content, \
 	t_node_avlt **root, t_node_avlt **root_err)
 {
-	char			buff[BUFF_SIZE];
+	char			*buff;
 	t_content		*content_child;
 
-	buff[0] = 0;
+	if (!(buff = (char *)ft_memalloc(sizeof(char) * (ft_strlen(content->path) + 5 + ft_strlen(d_name)))))
+		return ;
 	ft_strcat(buff, content->path);
 	ft_strcat(buff, "/");
 	ft_strcat(buff, d_name);
@@ -118,6 +119,7 @@ static void	fill_with_file(char *d_name, t_content *content, \
 			update_len(content, content_child);
 		}
 	}
+	ft_memdel((void **)&buff);
 }
 
 t_node_avlt	*ft_browse_dir(t_content *content, t_node_avlt **root_err)

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 00:31:58 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:02:11 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_content	*ft_content_err(char *path)
 {
 	t_content	*content;
-	char		buff[BUFF_SIZE];
+	char		*buff;
 
 	if (!(content = (t_content *)ft_memalloc(sizeof(t_content))))
 		return (NULL);
@@ -26,7 +26,11 @@ static t_content	*ft_content_err(char *path)
 		ft_putstr_fd("ls: fts_open: No such file or directory", 2);
 		return (NULL);
 	}
-	buff[0] = 0;
+	if (!(buff = (char *)ft_memalloc(sizeof(char) * (ft_strlen(path) + 40))))
+	{
+		ft_memdel((void **)&content);
+		return (NULL);
+	}
 	ft_strcat(buff, "ls: ");
 	ft_strcat(buff, path);
 	ft_strcat(buff, ": No such file or directory");
@@ -34,14 +38,15 @@ static t_content	*ft_content_err(char *path)
 	content->error = ft_strdup(buff);
 	content->path = ft_strdup(path);
 	content->link = NULL;
+	ft_memdel((void **)&buff);
 	return (content);
 }
 
 static t_content	*check_if_link_dir(t_content *content)
 {
 	ssize_t		ret;
-	char		buf[BUFF_SIZE];
-	char		curr_dir[BUFF_SIZE];
+	char		buf[PATH_MAX];
+	char		curr_dir[PATH_MAX];
 	struct stat	file_stat;
 
 	if ((ret = readlink(content->path, buf, sizeof(buf))) >= 0)
@@ -50,7 +55,7 @@ static t_content	*check_if_link_dir(t_content *content)
 		curr_dir[0] = 0;
 		ft_get_current_dir(content->path, curr_dir);
 		ft_strcat(curr_dir, buf);
-		if (lstat(curr_dir, &file_stat) < 0)
+		if (stat(curr_dir, &file_stat) < 0)
 			return (content);
 		if (content->level == 0 && S_ISDIR(file_stat.st_mode) \
 			&& (content->flag & FLAG_L) == 0)
