@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 23:09:19 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 00:32:10 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ typedef struct		s_content
 	size_t			len;
 	int				level;
 	time_t			time;
-	long       		timensec;
+	long       		time_sec;
+	long       		time_nsec;
 	int				has_extended_attributes;
 	int				has_acl;
 	unsigned long	st_mode;

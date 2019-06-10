@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:56:29 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 23:57:08 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 00:11:59 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,9 @@ void	ft_print_datum(t_content *content, t_content *r)
 		else
 			ft_printf("%-*d  ", r->len_gid, file_stat.st_gid);
 	}
-	int len_max;
-	len_max = r->len_major + 3 + r->len_minor > r->len_size ? r->len_major + 3 + r->len_minor :  r->len_size;
-
 	if (S_ISCHR(file_stat.st_mode) || S_ISBLK(file_stat.st_mode))
 		ft_printf(" %*u, %*u ", r->len_major + 1, major(file_stat.st_rdev), \
 			r->len_minor, minor(file_stat.st_rdev));
 	else
-		ft_printf(" %*lld ", len_max, file_stat.st_size);
+		ft_printf("%*lld ", r->len_size, file_stat.st_size);
 }

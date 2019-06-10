@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 22:52:25 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 00:31:58 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,20 @@ static t_content	*ft_get_default_values(t_content *content, long flag, \
 	if (flag & FLAG_CAP_U)
 	{
 		content->time = (content->file_stat).st_birthtime;
-		content->timensec = (content->file_stat).st_birthtimespec.tv_nsec;		
+		content->time_sec = (content->file_stat).st_birthtimespec.tv_sec;	
+		content->time_nsec = (content->file_stat).st_mtimespec.tv_nsec;	
 	}
 	else if (flag & FLAG_U)
 	{
 		content->time = (content->file_stat).st_atime;
-		content->timensec = (content->file_stat).st_atimespec.tv_nsec;
+		content->time_sec = (content->file_stat).st_atimespec.tv_sec;
+		content->time_nsec = (content->file_stat).st_mtimespec.tv_nsec;
 	}
 	else
 	{
 		content->time = (content->file_stat).st_mtime;
-		content->timensec = (content->file_stat).st_mtimespec.tv_nsec;
+		content->time_sec = (content->file_stat).st_mtimespec.tv_sec;
+		content->time_nsec = (content->file_stat).st_mtimespec.tv_nsec;
 	}
 	content->has_extended_attributes = has_extended_attributes(content->path);
 	content->has_acl = has_acl(content->path);
