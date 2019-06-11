@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:57:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 17:53:52 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:10:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,17 @@ void	ft_print_path(t_content *content)
 	struct stat	file_stat;
 	ssize_t		ret;
 	char		buf[PATH_MAX];
+	char		*tmp;
 
 	file_stat = content->file_stat;
 	if (content->level == 0)
 		ft_putstr_fd(content->path, 1);
 	else
-		ft_putstr_fd(ft_get_file_name(content), 1);
+	{
+		tmp = ft_get_file_name(content);
+		ft_printf("%s", tmp);
+		ft_memdel((void **)&tmp);
+	}
 	if (S_ISLNK(file_stat.st_mode))
 	{
 		if ((ret = readlink(content->path, buf, sizeof(buf))) >= 0)
