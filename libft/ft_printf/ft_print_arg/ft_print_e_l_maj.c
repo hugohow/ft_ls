@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/08 14:42:28 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 13:44:40 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char			*ft_print_e_l_maj(va_list *ap, t_flag *flag)
 	tmp = (long double)va_arg(*ap, long double);
 	size_allocation = flag->precision < 40 ? 40 : flag->precision + 5;
 	size_allocation += ft_nblen(tmp);
+	flag->size_allocation = size_allocation;
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
 	output = ft_fltoa(tmp, to_free, flag, size_allocation);

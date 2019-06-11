@@ -6,11 +6,27 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:30:05 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 20:15:09 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 13:35:44 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int			ft_get_precision(char *flag, int i)
+{
+	long long	precision;
+
+	i++;
+	precision = 0;
+	while (flag[i] && ft_isdigit(flag[i]))
+	{
+		precision = precision * 10 + (flag[i] - '0');
+		i++;
+	}
+	if (precision > 2147483647)
+		return (-1);
+	return ((int)precision);
+}
 
 int					ft_flag_get_precision(char *flag, va_list *ap)
 {
@@ -22,17 +38,7 @@ int					ft_flag_get_precision(char *flag, va_list *ap)
 	while (flag[i])
 	{
 		if (flag[i] == '.' && flag[i + 1] && ft_isdigit(flag[i + 1]))
-		{
-			i++;
-			while (flag[i] && ft_isdigit(flag[i]))
-			{
-				precision = precision * 10 + (flag[i] - '0');
-				i++;
-			}
-			if (precision > 2147483647)
-				return (-1);
-			return ((int)precision);
-		}
+			return (ft_get_precision(flag, i));
 		else if (flag[i] == '.' && flag[i + 1] == '*')
 		{
 			precision = (long long)va_arg(*ap, int);

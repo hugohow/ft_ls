@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 02:13:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 14:36:12 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ typedef struct		s_content
 	size_t			nb_files;
 	size_t			len;
 	int				level;
-	unsigned long long	time;
-	unsigned long long       		time_sec;
-	unsigned long long       		time_nsec;
+	long long		time;
+	long long		time_sec;
+	long long		time_nsec;
 	int				has_extended_attributes;
 	int				has_acl;
 	unsigned long	st_mode;
@@ -110,8 +110,6 @@ typedef struct		s_content
 	char			*gr_name;
 	t_node_avlt		*subtree;
 }					t_content;
-
-
 
 typedef struct		s_letter_flag
 {
@@ -142,19 +140,19 @@ int					ft_nodecmp_date(t_node_avlt *node1, t_node_avlt *node2);
 int					ft_nodecmp_path(t_node_avlt *node1, t_node_avlt *node2);
 int					ft_nodecmp_unsorted(t_node_avlt *node1, t_node_avlt *node2);
 int					ft_nodecmp_size(t_node_avlt *node1, t_node_avlt *node2);
-void				ft_print_file_stat_long(t_content *content, t_content *content_root);
+void				ft_print_file_stat_long(t_content *ct, t_content *ct_r);
 void				ft_print_full_tree(t_node_avlt *root, \
 	int *p_ret, int *p_index_g, t_content *content_dir);
 void				ft_print_full_tree_err(t_node_avlt *root);
-void				ft_print_file_stat_long(t_content *content, t_content *content_root);
+void				ft_print_file_stat_long(t_content *ct, t_content *ct_r);
 void				ft_print_file_stat(t_content *content, int index);
 char				*ft_get_current_dir(const char *path, char *curr_dir);
 int					has_extended_attributes(const char *path);
 int					has_acl(const char *path);
 void				ft_print_tree_reverse(t_node_avlt *root, \
-	t_queue **p_queue, int *p_index_g, t_content *content_root);
+	t_queue **p_queue, int *p_index_g, t_content *ct_r);
 void				ft_print_tree(t_node_avlt *root, \
-	t_queue **p_queue, int *p_index_g, t_content *content_root);
+	t_queue **p_queue, int *p_index_g, t_content *ct_r);
 void				ft_print_date(t_content *content);
 void				ft_print_mode(t_content *content);
 void				ft_print_acl_attr(t_content *content);
@@ -163,7 +161,8 @@ void				ft_print_path(t_content *content);
 void				ft_del_tree(t_node_avlt **p_root);
 char				ft_get_letter_mode(unsigned long st_mode);
 char				*ft_get_color_bg_fg(struct stat file_stat, char *buff);
-void				ft_print_content(t_node_avlt *node, int index, t_content *content_root);
+void				ft_print_content(t_node_avlt *node, int i, t_content *ct_r);
 t_content			*ft_get_default_values(t_content *content, long flag, \
 	int level, size_t len);
+
 #endif

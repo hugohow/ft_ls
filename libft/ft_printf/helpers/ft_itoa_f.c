@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 14:40:14 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 14:01:40 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,8 @@ char		*ft_ftoa(double nb, char *floating_str, t_flag *flag, int size)
 	if (!(output = (char *)ft_memalloc(size * sizeof(char))))
 		return (NULL);
 	output = get_dec_mantissa(floating_str + 12, &output, size);
+	if (nb == 1)
+		output = ft_strcpy(output, "1.");
 	if (nb == 0)
 		output = ft_strcpy(output, "0.");
 	else if (expo == 1024)
