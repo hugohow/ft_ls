@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:56:29 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 00:11:59 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 02:47:19 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	ft_print_datum(t_content *content, t_content *r)
 	if ((content->flag & FLAG_O) == 0)
 	{
 		if (content->gr_name && (content->flag & FLAG_N) == 0)
-			ft_printf("%-*s  ", r->len_group, content->gr_name);
+			ft_printf("%-*s", r->len_group, content->gr_name);
 		else
-			ft_printf("%-*d  ", r->len_gid, file_stat.st_gid);
+			ft_printf("%-*d", r->len_gid, file_stat.st_gid);
 	}
+	ft_putstr("  ");
 	if (S_ISCHR(file_stat.st_mode) || S_ISBLK(file_stat.st_mode))
 		ft_printf(" %*u, %*u ", r->len_major + 1, major(file_stat.st_rdev), \
 			r->len_minor, minor(file_stat.st_rdev));

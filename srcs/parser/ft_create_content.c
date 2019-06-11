@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 01:32:38 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 02:43:05 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static t_content	*check_if_link_dir(t_content *content)
 		if (stat(curr_dir, &file_stat) < 0)
 			return (content);
 		if (content->level == 0 && S_ISDIR(file_stat.st_mode) \
-			&& (content->flag & FLAG_L) == 0)
+			&& (content->flag & (FLAG_L | FLAG_O)) == 0)
 		{
 			content->st_mode = file_stat.st_mode;
 			ft_memdel((void **)&(content->name));
