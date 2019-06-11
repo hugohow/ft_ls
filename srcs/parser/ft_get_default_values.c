@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 01:13:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 19:48:38 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 22:23:51 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,11 @@ t_content	*ft_get_default_values(t_content *content, long flag, \
 	content->has_acl = has_acl(content->path);
 	get_time(content, flag);
 	get_null_values(content);
-	if ((content->flag & FLAG_G) == 0 && \
-		((pwd = getpwuid((content->file_stat).st_uid)) != NULL))
+	if (((pwd = getpwuid((content->file_stat).st_uid)) != NULL))
 		content->pw_name = pwd->pw_name;
 	else
 		content->pw_name = NULL;
-	if ((content->flag & FLAG_O) == 0 && \
-		(grp = getgrgid((content->file_stat).st_gid)) != NULL)
+	if ((grp = getgrgid((content->file_stat).st_gid)) != NULL)
 		content->gr_name = grp->gr_name;
 	else
 		content->gr_name = NULL;

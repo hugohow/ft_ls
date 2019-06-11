@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 22:57:59 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/11 19:58:12 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/11 22:41:42 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -417,7 +417,6 @@ execute "-Rulrfl ~/"
 execute "-Rulrflg ~/"
 execute "-Rulrflgd ~/"
 execute "-RulrSlgd ~/"
-execute "-RulrSlgdn ~/"
 execute "-Rulr -Slg -d ~/"
 execute "-Rulr -Slg ~/"
 execute "-Rulr -Slg -i ~/"
@@ -450,7 +449,7 @@ execute "-ulf /"
 execute "-ulf /"
 execute "-ulfl /"
 execute "-ulflg /"
-execute "-ulflgn /"
+execute "-ulflg /"
 execute "-ulflgd /"
 execute "-ulSlgd /"
 execute "-ul -Slg -d /"
@@ -493,7 +492,7 @@ execute "-R /etc/"
 execute "-RS /etc/"
 execute "-R /etc/"
 execute "-Rul /etc/"
-execute "-Ruln /etc/"
+execute "-Rul /etc/"
 execute "-RulS /etc/"
 execute "-Rulf /etc/"
 execute "-Rulrf /etc/"
