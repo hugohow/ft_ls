@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:55:06 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/11 01:18:10 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/11 19:17:24 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ SRC =	srcs/ft_ls.c   \
 		srcs/utils/ft_get_current_dir.c   \
 		srcs/utils/ft_get_file_name.c   \
 		srcs/utils/ft_nodecmp.c   \
-		srcs/utils/ft_print_content.c   
+		srcs/utils/ft_print_content.c   \
+		srcs/utils/ft_info_file.c
 
 all: $(NAME)
 

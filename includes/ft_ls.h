@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 18:00:52 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:16:47 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void				ft_fill_tree_recursive(t_node_avlt **root, \
 	t_content *content, t_node_avlt **root_err);
 void				ft_fill_tree(t_node_avlt **root, t_content *content, \
 	t_node_avlt **root_err);
-char				*ft_get_file_name(t_content * content);
+char				*ft_get_file_name(t_content *content);
 int					ft_nodecmp_date(t_node_avlt *node1, t_node_avlt *node2);
 int					ft_nodecmp_path(t_node_avlt *node1, t_node_avlt *node2);
 int					ft_nodecmp_unsorted(t_node_avlt *node1, t_node_avlt *node2);
@@ -163,4 +163,5 @@ void				ft_print_content(t_node_avlt *node, int i, t_content *ct_r);
 t_content			*ft_get_default_values(t_content *content, long flag, \
 	int level, size_t len);
 char				*ft_get_file_name_raw(t_content *content);
+int					file_is_hidden(char *name);
 #endif
