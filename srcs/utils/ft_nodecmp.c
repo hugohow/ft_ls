@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 15:32:25 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 19:45:40 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:49:38 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_nodecmp_date(t_node_avlt *node1, t_node_avlt *node2)
 {
 	long long	ret;
-	t_content			*file1;
-	t_content			*file2;
+	t_content	*file1;
+	t_content	*file2;
 
 	file1 = ((t_content *)(node1->content));
 	file2 = ((t_content *)(node2->content));

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:09:18 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 18:07:29 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:50:37 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void		ft_print_subtree(t_content *content, int *p_ret, int *p_index_g)
 		ft_print_full_tree(content->subtree, p_ret, p_index_g, content);
 }
 
-void		ft_print_full_tree(t_node_avlt *root, int *p_ret, int *p_index_g, t_content *content_dir)
+void		ft_print_full_tree(t_node_avlt *root, int *p_ret, \
+	int *p_index_g, t_content *content_dir)
 {
 	t_queue		*queue;
 	t_content	*content_root;

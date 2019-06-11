@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 19:24:36 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:50:52 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ t_content			*ft_create_content(char *path, long flag, \
 	content->file_stat = file_stat;
 	content->st_mode = file_stat.st_mode;
 	content->path = ft_strdup(path);
-	
 	content = ft_get_default_values(content, flag, level, len);
 	if (S_ISLNK(content->st_mode))
 		content = check_if_link_dir(content);
