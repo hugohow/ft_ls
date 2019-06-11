@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 17:26:58 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 16:47:30 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 15:02:55 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ char					*ft_get_color_bg_fg(struct stat file_stat, char *buff)
 	if (colors == NULL)
 		return (buff);
 	i = get_index(file_stat);
-	if (ft_strlen(colors) != 22)
+	if (ft_strlen(colors) < 22)
 		return (buff);
 	if (i == -1)
 		return (buff);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 02:43:05 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:03:34 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ static t_content	*check_if_link_dir(t_content *content)
 			&& (content->flag & (FLAG_L | FLAG_O)) == 0)
 		{
 			content->st_mode = file_stat.st_mode;
-			ft_memdel((void **)&(content->name));
-			content->name = ft_get_file_name(buf, file_stat, content->flag);
 			content->file_stat = file_stat;
 			content->st_size = file_stat.st_size;
 		}
@@ -84,7 +82,7 @@ t_content			*ft_create_content(char *path, long flag, \
 	content->file_stat = file_stat;
 	content->st_mode = file_stat.st_mode;
 	content->path = ft_strdup(path);
-	content->name = ft_get_file_name(path, file_stat, flag);
+	
 	content = ft_get_default_values(content, flag, level, len);
 	if (S_ISLNK(content->st_mode))
 		content = check_if_link_dir(content);

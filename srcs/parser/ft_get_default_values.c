@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 01:13:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 14:35:59 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 14:40:55 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ static void	get_time(t_content *content, long flag)
 	if (flag & FLAG_CAP_U)
 	{
 		content->time = (long long)(content->file_stat).st_birthtime;
-		content->time_sec = (long long)(content->file_stat).st_birthtimespec.tv_sec;	
-		content->time_nsec = (long long)(content->file_stat).st_mtimespec.tv_nsec;	
+		content->sec = (long long)(content->file_stat).st_birthtimespec.tv_sec;
+		content->nsec = (long long)(content->file_stat).st_mtimespec.tv_nsec;
 	}
 	else if (flag & FLAG_U)
 	{
 		content->time = (long long)(content->file_stat).st_atime;
-		content->time_sec = (long long)(content->file_stat).st_atimespec.tv_sec;
-		content->time_nsec = (long long)(content->file_stat).st_mtimespec.tv_nsec;
+		content->sec = (long long)(content->file_stat).st_atimespec.tv_sec;
+		content->nsec = (long long)(content->file_stat).st_mtimespec.tv_nsec;
 	}
 	else
 	{
 		content->time = (long long)(content->file_stat).st_mtime;
-		content->time_sec = (long long)(content->file_stat).st_mtimespec.tv_sec;
-		content->time_nsec = (long long)(content->file_stat).st_mtimespec.tv_nsec;
+		content->sec = (long long)(content->file_stat).st_mtimespec.tv_sec;
+		content->nsec = (long long)(content->file_stat).st_mtimespec.tv_nsec;
 	}
 }
 

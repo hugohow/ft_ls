@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:09:18 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 02:43:09 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:07:29 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		ft_print_subtree(t_content *content, int *p_ret, int *p_index_g)
 		if ((p_dir = opendir(content->path)) == NULL)
 		{
 			ft_putstr_fd("ls: ", 2);
-			ft_putstr_fd(content->name, 2);
+			ft_putstr_fd(ft_get_file_name_raw(content), 2);
 			ft_putstr_fd(": ", 2);
 			perror("");
 		}

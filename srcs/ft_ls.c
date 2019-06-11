@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 22:49:33 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 14:39:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,14 @@ t_node_avlt **root_tree_err)
 	{
 		ft_print_full_tree_err(*root_tree_err);
 		if (*root_tree_content)
-			ft_print_full_tree(*root_tree_content, &ret, &index_g, (*root_tree_content)->content);
+			ft_print_full_tree(*root_tree_content, &ret, \
+				&index_g, (*root_tree_content)->content);
 		return (1);
 	}
 	ret = 0;
 	if (*root_tree_content)
-		ft_print_full_tree(*root_tree_content, &ret, &index_g, (*root_tree_content)->content);
+		ft_print_full_tree(*root_tree_content, &ret, \
+			&index_g, (*root_tree_content)->content);
 	return (ret);
 }
 

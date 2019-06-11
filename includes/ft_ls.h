@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 14:36:12 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:00:52 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define FLAG_R (1 << 2)
 # define FLAG_CAP_R (1 << 3)
 # define FLAG_T (1 << 4)
-
 # define FLAG_G (1 << 5)
 # define FLAG_U (1 << 6)
 # define FLAG_F (1 << 7)
@@ -90,8 +89,8 @@ typedef struct		s_content
 	size_t			len;
 	int				level;
 	long long		time;
-	long long		time_sec;
-	long long		time_nsec;
+	long long		sec;
+	long long		nsec;
 	int				has_extended_attributes;
 	int				has_acl;
 	unsigned long	st_mode;
@@ -134,8 +133,7 @@ void				ft_fill_tree_recursive(t_node_avlt **root, \
 	t_content *content, t_node_avlt **root_err);
 void				ft_fill_tree(t_node_avlt **root, t_content *content, \
 	t_node_avlt **root_err);
-char				*ft_get_file_name(const char *path, \
-	struct stat file_stat, long flag);
+char				*ft_get_file_name(t_content * content);
 int					ft_nodecmp_date(t_node_avlt *node1, t_node_avlt *node2);
 int					ft_nodecmp_path(t_node_avlt *node1, t_node_avlt *node2);
 int					ft_nodecmp_unsorted(t_node_avlt *node1, t_node_avlt *node2);
@@ -164,5 +162,5 @@ char				*ft_get_color_bg_fg(struct stat file_stat, char *buff);
 void				ft_print_content(t_node_avlt *node, int i, t_content *ct_r);
 t_content			*ft_get_default_values(t_content *content, long flag, \
 	int level, size_t len);
-
+char				*ft_get_file_name_raw(t_content *content);
 #endif
