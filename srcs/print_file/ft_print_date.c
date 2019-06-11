@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:43:56 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 14:39:51 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:40:34 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_print_date(t_content *content)
 	string = ctime((time_t *)&(content->time));
 	ft_printf("%3.3s ", string + 4);
 	ft_printf("%2.2s ", string + 8);
-	if ((now - content->time) > SIXMONTHS || (long long)now < content->time)
+	if ((now - content->time) > SIXMONTHS || (unsigned long long)now < content->time)
 		ft_printf("%5.*s ", ft_nblen(ft_strtim_return(string + 20)), \
 			ft_strtim_return(string + 20));
 	else

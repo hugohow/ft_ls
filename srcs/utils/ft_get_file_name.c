@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 15:53:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 17:59:58 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:19:42 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_get_file_name_raw(t_content *content)
 	char	*buff;
 
 	file_name = ft_strrchr(content->path, '/');
-	if (!(buff = (char *)ft_memalloc(sizeof(char) * (ft_strlen(content->path) + 40))))
+	if (!(buff = (char *)ft_memalloc(sizeof(char) * \
+		(ft_strlen(content->path) + 40))))
 		return (NULL);
 	if (ft_strcmp("/", content->path) == 0 || file_name == NULL)
 		ft_strcat(buff, content->path);
@@ -32,7 +33,6 @@ char	*ft_get_file_name_raw(t_content *content)
 	return (buff);
 }
 
-
 char	*ft_get_file_name(t_content *content)
 {
 	char	*file_name;
@@ -40,7 +40,8 @@ char	*ft_get_file_name(t_content *content)
 	char	*buff;
 
 	file_name = ft_strrchr(content->path, '/');
-	if (!(buff = (char *)ft_memalloc(sizeof(char) * (ft_strlen(content->path) + 40))))
+	if (!(buff = (char *)ft_memalloc(sizeof(char) * \
+		(ft_strlen(content->path) + 40))))
 		return (NULL);
 	if (content->flag & FLAG_CAP_G)
 		color = ft_get_color_bg_fg(content->file_stat, buff);

@@ -6,11 +6,17 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 18:03:34 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:24:36 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+static t_content	*ft_return_null(t_content *content)
+{
+	ft_memdel((void **)&content);
+	return (NULL);
+}
 
 static t_content	*ft_content_err(char *path)
 {
@@ -22,15 +28,11 @@ static t_content	*ft_content_err(char *path)
 	content->st_mode = 0;
 	if (ft_strlen(path) == 0)
 	{
-		ft_memdel((void **)&content);
 		ft_putstr_fd("ls: fts_open: No such file or directory\n", 2);
-		return (NULL);
+		return (ft_return_null(content));
 	}
 	if (!(buff = (char *)ft_memalloc(sizeof(char) * (ft_strlen(path) + 40))))
-	{
-		ft_memdel((void **)&content);
-		return (NULL);
-	}
+		return (ft_return_null(content));
 	ft_strcat(buff, "ls: ");
 	ft_strcat(buff, path);
 	ft_strcat(buff, ": No such file or directory");

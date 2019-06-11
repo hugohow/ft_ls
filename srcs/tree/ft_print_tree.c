@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 00:11:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 21:25:57 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:21:57 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_enqueue_node_tree(t_queue **p_queue, t_node_avlt *root)
 }
 
 void		ft_print_tree_reverse(t_node_avlt *root, \
-	t_queue **p_queue, int *p_index_g, t_content	*content_root)
+	t_queue **p_queue, int *p_index_g, t_content *content_root)
 {
 	t_content *content;
 
@@ -63,7 +63,8 @@ void		ft_print_tree_reverse(t_node_avlt *root, \
 	ft_print_tree_reverse(root->left, p_queue, p_index_g, content_root);
 }
 
-void		ft_print_tree(t_node_avlt *root, t_queue **p_queue, int *p_index_g, t_content	*content_root)
+void		ft_print_tree(t_node_avlt *root, t_queue **p_queue, \
+	int *p_index_g, t_content *content_root)
 {
 	t_content *content;
 

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:33:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 18:11:25 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:21:09 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static int	ft_strlen_m(const char *str)
 	return (length);
 }
 
-
 static void	update_len(t_content *content, t_content *content_child)
 {
 	struct stat file_stat;
@@ -56,19 +55,14 @@ static void	update_len(t_content *content, t_content *content_child)
 		content->len_owner = ft_strlen_m(content_child->pw_name);
 	if (ft_strlen_m(content_child->gr_name) > content->len_group)
 		content->len_group = ft_strlen_m(content_child->gr_name);
-
 	if (ft_nblen(content_child->st_size) > content->len_size)
 		content->len_size = ft_nblen(content_child->st_size);
-
 	if (ft_nblen(file_stat.st_ino) > content->len_ino)
 		content->len_ino = ft_nblen(file_stat.st_ino);
-
 	if (ft_nblen(file_stat.st_uid) > content->len_uid)
 		content->len_uid = ft_nblen(file_stat.st_uid);
-
 	if (ft_nblen(file_stat.st_gid) > content->len_gid)
 		content->len_gid = ft_nblen(file_stat.st_gid);
-
 	if (S_ISCHR(file_stat.st_mode) || S_ISBLK(file_stat.st_mode))
 	{
 		if (ft_nblen(major(file_stat.st_rdev)) > content->len_major)
@@ -84,7 +78,8 @@ static void	fill_with_file(char *d_name, t_content *content, \
 	char			*buff;
 	t_content		*content_child;
 
-	if (!(buff = (char *)ft_memalloc(sizeof(char) * (ft_strlen(content->path) + 5 + ft_strlen(d_name)))))
+	if (!(buff = (char *)ft_memalloc(sizeof(char) * \
+		(ft_strlen(content->path) + 5 + ft_strlen(d_name)))))
 		return ;
 	ft_strcat(buff, content->path);
 	ft_strcat(buff, "/");
