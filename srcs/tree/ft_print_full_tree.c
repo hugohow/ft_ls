@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:09:18 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 19:50:37 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:25:49 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,13 @@ void		ft_print_subtree(t_content *content, int *p_ret, int *p_index_g)
 	DIR *p_dir;
 
 	if (*p_index_g != 0)
-		ft_printf("\n");
+		ft_putchar_fd('\n', 1);
 	*p_index_g = *p_index_g + 1;
 	if (content->level != 0 || content->len != 1)
-		ft_printf("%s:\n", content->path);
+	{
+		ft_putstr_fd(content->path, 1);
+		ft_putstr_fd(":\n", 1);
+	}
 	if (content->flag & (FLAG_L | FLAG_O) && content->nb_files != 0)
 		ft_printf("total %ld\n", content->total_size);
 	if (content->st_mode == 0)

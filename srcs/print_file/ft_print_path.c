@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:57:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 20:10:33 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:24:22 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_print_path(t_content *content)
 	else
 	{
 		tmp = ft_get_file_name(content);
-		ft_printf("%s", tmp);
+		ft_putstr_fd(tmp, 1);
 		ft_memdel((void **)&tmp);
 	}
 	if (S_ISLNK(file_stat.st_mode))
