@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 11:19:07 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 01:13:34 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:32:38 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_content	*ft_content_err(char *path)
 	if (ft_strlen(path) == 0)
 	{
 		ft_memdel((void **)&content);
-		ft_putstr_fd("ls: fts_open: No such file or directory", 2);
+		ft_putstr_fd("ls: fts_open: No such file or directory\n", 2);
 		return (NULL);
 	}
 	if (!(buff = (char *)ft_memalloc(sizeof(char) * (ft_strlen(path) + 40))))

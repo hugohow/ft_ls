@@ -6,23 +6,43 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 02:43:56 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 23:48:53 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 02:15:26 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_print_date(t_content *content)
+static int	ft_nblen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	return (i);
+}
+
+static char	*ft_strtim_return(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
+	return (str + i);
+}
+
+void		ft_print_date(t_content *content)
 {
 	char	*string;
 	time_t	now;
 
 	now = time(NULL);
-	string = ctime(&(content->time));
+	string = ctime((time_t *)&(content->time));
 	ft_printf("%3.3s ", string + 4);
 	ft_printf("%2.2s ", string + 8);
-	if ((now - content->time) > SIXMONTHS || now < content->time)
-		ft_printf("%5.4s ", string + 20);
+	if ((now - content->time) > SIXMONTHS || (unsigned long long)now < content->time)
+		ft_printf("%5.*s ", ft_nblen(ft_strtim_return(string + 20)), ft_strtim_return(string + 20));
 	else
 		ft_printf("%5.5s ", string + 11);
 }

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:54:51 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 23:09:31 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 02:32:00 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,16 @@ static int	ft_parse_arg(char *str, long *p_flag)
 	{
 		if ((ret = ft_get_flag(str[j])) == -1)
 			return (raise_error(str[j]));
+		else if (ret & FLAG_ONE)
+		{
+			*p_flag |= ret;
+			*p_flag &= ~FLAG_L;
+		}
+		else if (ret & FLAG_L)
+		{
+			*p_flag |= ret;
+			*p_flag &= ~FLAG_ONE;
+		}
 		else
 			*p_flag |= ret;
 		j++;

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 01:17:29 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/11 02:13:46 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ typedef struct		s_content
 	size_t			nb_files;
 	size_t			len;
 	int				level;
-	time_t			time;
-	long       		time_sec;
-	long       		time_nsec;
+	unsigned long long	time;
+	unsigned long long       		time_sec;
+	unsigned long long       		time_nsec;
 	int				has_extended_attributes;
 	int				has_acl;
 	unsigned long	st_mode;
