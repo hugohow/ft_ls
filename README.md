@@ -11,3 +11,21 @@ Consideration of all edge cases (different permission mode with ACL, setuid, set
 ## TO DO
 
 Add `make test` for linux
+
+## Usage
+
+### OSX :
+
+```
+make re
+./ft_ls
+```
+
+### Linux :
+
+```
+sudo apt-get install -y libc6-dev libacl1-dev
+make re
+./ft_ls
+```
+
