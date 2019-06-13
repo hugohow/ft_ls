@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:55:06 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/13 14:01:17 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/13 14:08:43 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ test: re
 	sh test.sh
 else
 test: re
+	@echo "\n\n\033[45mBuild ok, launch tests on OSX\033[0m\n\n"
 	exit 0
 endif
 
