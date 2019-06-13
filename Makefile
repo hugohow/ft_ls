@@ -6,13 +6,13 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:55:06 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/13 14:08:43 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/13 14:16:38 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		=		ft_ls
 CC			= 		gcc
-ifeq ($(UNAME_S),Darwin)
+ifeq ($(shell uname),Darwin)
 CFLAGS 		= 		-Iincludes -Wall -Werror -Wextra
 else
 CFLAGS 		= 		-Iincludes -Wall -Wextra
@@ -55,16 +55,33 @@ SRC =	srcs/ft_ls.c   \
 
 all: $(NAME)
 
+
+ifeq ($(shell uname),Darwin)
+%.o: %.c
+	@printf "[ft_ls] Compiling [.:]\r"
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "[ft_ls] Compiling [:.]\r"
+else
 %.o: %.c
 	@printf "[ft_ls] Compiling [.:]\r"
 	@$(CC) $(CFLAGS) -c $< -lacl -o $@
 	@printf "[ft_ls] Compiling [:.]\r"
+endif
 
+
+ifeq ($(shell uname),Darwin)
+$(NAME): $(OBJ)
+	@make -C libft/
+	@echo "Creating" [ $(NAME) ]
+	@$(CC) $(CFLAGS) $(INCLUDES) $^ libft/libft.a -o $(NAME)
+	@echo "Creation" [ $(NAME) ] $(SUCCESS)
+else
 $(NAME): $(OBJ)
 	@make -C libft/
 	@echo "Creating" [ $(NAME) ]
 	@$(CC) $(CFLAGS) $(INCLUDES) $^ -lacl libft/libft.a -o $(NAME)
 	@echo "Creation" [ $(NAME) ] $(SUCCESS)
+endif
 
 clean:
 	@make clean -C libft/

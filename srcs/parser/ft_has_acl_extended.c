@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 17:45:20 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/13 12:14:49 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/13 14:26:15 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ int	has_acl(const char *path)
 {
 	acl_t acl;
 
+#ifdef __APPLE__
+	acl = acl_get_file(path, ACL_TYPE_EXTENDED);
+#else
 	acl = acl_get_file(path, ACL_TYPE_ACCESS);
+#endif
 	if (acl)
 	{
 		acl_free((void *)acl);
