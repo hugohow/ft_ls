@@ -14,6 +14,10 @@ Add `make test` for linux
 
 ## Usage
 
+```
+usage: ./ft_ls [-RGUSagilortu1] [file ...]
+```
+
 ### OSX :
 
 ```
