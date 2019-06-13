@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 12:51:18 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/13 12:31:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static char	*ft_itoa_p(void *addr, t_flag *flag, int size)
 	char			*output;
 	unsigned char	*t;
 
-	i = (sizeof(uintptr_t));
-	if (!(t = (unsigned char *)ft_memalloc((sizeof(uintptr_t) \
+	i = (sizeof(void *));
+	if (!(t = (unsigned char *)ft_memalloc((sizeof(void *) \
 		+ 2) * sizeof(unsigned char))))
 		return (NULL);
-	t = ft_memcpy(t, &addr, sizeof(uintptr_t));
+	t = ft_memcpy(t, &addr, sizeof(void *));
 	if (!(output = (char *)ft_memalloc(size * sizeof(char))))
 	{
 		ft_memdel((void **)&t);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 15:32:25 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 19:49:38 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/13 12:23:35 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	ft_nodecmp_date(t_node_avlt *node1, t_node_avlt *node2)
 	ret = file2->sec - file1->sec;
 	if (ret != 0)
 		return (ret > 0 ? 1 : -1);
+#ifdef __APPLE__
 	ret = file2->nsec - file1->nsec;
 	if (ret != 0)
 		return (ret > 0 ? 1 : -1);
+#endif
 	return (ft_nodecmp_path(node1, node2));
 }
 

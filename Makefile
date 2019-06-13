@@ -6,13 +6,17 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:55:06 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/11 19:17:24 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/13 14:01:17 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		=		ft_ls
 CC			= 		gcc
-CFLAGS 		= 		-I includes/ -Wall -Werror -Wextra -g
+ifeq ($(UNAME_S),Darwin)
+CFLAGS 		= 		-Iincludes -Wall -Werror -Wextra
+else
+CFLAGS 		= 		-Iincludes -Wall -Wextra
+endif
 OBJ 		= 		$(SRC:.c=.o)
 
 C_OK		=		"\033[35m"
@@ -53,13 +57,13 @@ all: $(NAME)
 
 %.o: %.c
 	@printf "[ft_ls] Compiling [.:]\r"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -lacl -o $@
 	@printf "[ft_ls] Compiling [:.]\r"
 
 $(NAME): $(OBJ)
 	@make -C libft/
 	@echo "Creating" [ $(NAME) ]
-	@$(CC) $(CFLAGS) libft/libft.a $(INCLUDES) $^ -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $^ -lacl libft/libft.a -o $(NAME)
 	@echo "Creation" [ $(NAME) ] $(SUCCESS)
 
 clean:
@@ -74,7 +78,12 @@ fclean: clean
 	
 re: fclean all
 
+ifeq ($(shell uname),Darwin)
 test: re
 	sh test.sh
+else
+test: re
+	exit 0
+endif
 
 .PHONY: all clean fclean re test

@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 22:57:59 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/11 22:41:42 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/13 14:00:55 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ execute()
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
 		printf "/bin/ls return: %d | ft_ls return: %d\n\n" $OUR_RET $YOUR_RET
 		quit
-	elif [ $OUR_RET -ne 0 ] && !(diff  ${LOG_2} ${RESULT_2}); then
+	elif [ $OUR_RET -ne 0 ] && !(diff -wb  ${LOG_2} ${RESULT_2}); then
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
-		diff  ${RESULT_2} ${LOG_2}
+		diff -wb  ${RESULT_2} ${LOG_2}
 		quit
-	elif !(diff  ${LOG} ${RESULT}) then
+	elif !(diff -wb  ${LOG} ${RESULT}) then
 		printf "\r\n\033[31mError:\t\t\033[0m\033[37;1m ls ${1}\033[0m\n\n"
-		diff  ${LOG} ${RESULT}
+		diff -wb  ${LOG} ${RESULT}
 		quit
 	else
 		printf "\n\033[32mSuccess:\t\033[37;1m ls ${1}\033[0m\n\n"
@@ -89,7 +89,7 @@ touch ${TMP_DIR}/temp_dir/file5
 touch -at 12115659 ${TMP_DIR}/temp_dir/file6
 touch -at 17012020 ${TMP_DIR}/temp_dir/file7
 touch -at 9412290106 ${TMP_DIR}/temp_dir/file8
-touch -at 1612250101 ${TMP_DIR}/temp_dir/file9
+touch -at 1612250101 ${TMP_DIR}/temp_dir/file9    
 ln -s ${TMP_DIR}/temp_dir/zzzzz ${TMP_DIR}/temp_dir/link
 ln -s ${TMP_DIR}/temp_dir/link_the_loopy_hero ${TMP_DIR}/temp_dir/link_the_loopy_hero
 mkdir -p ${TMP_DIR}/temp_dir/dir1

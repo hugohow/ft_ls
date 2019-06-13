@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 01:13:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 22:23:51 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/13 12:24:18 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,18 @@ static void	get_null_values(t_content *content)
 
 static void	get_time(t_content *content, long flag)
 {
+#ifdef __APPLE__
 	if (flag & FLAG_CAP_U)
 	{
 		content->time = (time_t)(content->file_stat).st_birthtime;
 		content->sec = (long)(content->file_stat).st_birthtimespec.tv_sec;
-		content->nsec = (long)(content->file_stat).st_mtimespec.tv_nsec;
+		content->nsec = (long)(content->file_stat).st_birthtimespec.tv_nsec;
 	}
 	else if (flag & FLAG_U)
 	{
 		content->time = (time_t)(content->file_stat).st_atime;
 		content->sec = (long)(content->file_stat).st_atimespec.tv_sec;
-		content->nsec = (long)(content->file_stat).st_mtimespec.tv_nsec;
+		content->nsec = (long)(content->file_stat).st_atimespec.tv_nsec;
 	}
 	else
 	{
@@ -50,6 +51,20 @@ static void	get_time(t_content *content, long flag)
 		content->sec = (long)(content->file_stat).st_mtimespec.tv_sec;
 		content->nsec = (long)(content->file_stat).st_mtimespec.tv_nsec;
 	}
+#else
+	if (flag & FLAG_CAP_U)
+	{
+		content->time = (content->file_stat).st_ctime;
+	}
+	else if (flag & FLAG_U)
+	{
+		content->time = (content->file_stat).st_atime;
+	}
+	else
+	{
+		content->time = (content->file_stat).st_mtime;
+	}
+#endif
 }
 
 t_content	*ft_get_default_values(t_content *content, long flag, \

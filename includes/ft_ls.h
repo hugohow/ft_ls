@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 14:45:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 19:51:32 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/13 13:47:45 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # include "libft.h"
 # include "avltree.h"
 # include "queue.h"
+#ifdef __APPLE__
+#else
+# include <sys/sysmacros.h>
+#endif
 # define FLAG_A (1 << 0)
 # define FLAG_L (1 << 1)
 # define FLAG_R (1 << 2)
@@ -88,9 +92,15 @@ typedef struct		s_content
 	size_t			nb_files;
 	size_t			len;
 	int				level;
+#ifdef __APPLE__
 	time_t			time;
 	long			sec;
 	long			nsec;
+#else
+	time_t			time;
+	time_t			sec;
+	time_t			nsec;
+#endif
 	int				has_extended_attributes;
 	int				has_acl;
 	unsigned long	st_mode;

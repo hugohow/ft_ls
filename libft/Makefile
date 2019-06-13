@@ -6,12 +6,16 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 23:41:00 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/06 02:05:53 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/13 13:32:30 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	gcc $(FLAGS) -I includes
-FLAGS	=	-Wall -Wextra -Werror
+CC		=	gcc $(FLAGS)
+ifeq ($(UNAME_S),Darwin)
+FLAGS 		= 		-Iincludes -Wall -Werror -Wextra
+else
+FLAGS 		= 		-Iincludes -Wall -Wextra
+endif
 NAME	=	libft.a
 
 SRCS	=	core/ft_memset.c					\

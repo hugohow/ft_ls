@@ -7,3 +7,7 @@
 Implementation of balanced binary tree (avl tree) to get good performance on recursive call.
 
 Consideration of all edge cases (different permission mode with ACL, setuid, setgid, dirty bit ; different type of file like symlink, pipe, character, ...)
+
+## TO DO
+
+Add `make test` for linux
