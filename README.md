@@ -8,6 +8,9 @@ Implementation of balanced binary tree (avl tree) to get good performance on rec
 
 Consideration of all edge cases (different permission mode with ACL, setuid, setgid, dirty bit ; different type of file like symlink, pipe, character, ...)
 
+### No memory leaks.
+
+
 ## TO DO
 
 Add `make test` for linux
